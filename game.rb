@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 
 # Eww, global variables.
-$MAX_NUMBER = 100
-$MIN_NUMBER = 1
-$MAX_GUESSES = 10
+MAX_NUMBER = 100
+MIN_NUMBER = 1
+MAX_GUESSES = 10
 
 
 def game( name )
 
-  computers_number = rand($MAX_NUMBER - $MIN_NUMBER + 1) + $MIN_NUMBER
-  puts "Hello #{name}. I'm guessing a number between #{$MIN_NUMBER} and #{$MAX_NUMBER}."
+  computers_number = rand(MAX_NUMBER - MIN_NUMBER + 1) + MIN_NUMBER
+  puts "Hello #{name}. I'm guessing a number between #{MIN_NUMBER} and #{MAX_NUMBER}."
   puts "You need to guess the number. I will tell you if you are too low or too high."
 
   guesses = 0
@@ -30,11 +30,11 @@ def game( name )
     guess = guess.to_i
 
     # some polite error checking as it's only a game.
-    if guess < $MIN_NUMBER
-      puts "Silly, needs to be above #{$MIN_NUMBER}, try again!"
+    if guess < MIN_NUMBER
+      puts "Silly, needs to be above #{MIN_NUMBER}, try again!"
       next
-    elsif guess > $MAX_NUMBER
-      puts "Silly, needs to be above #{$MAX_NUMBER}, try again!"
+    elsif guess > MAX_NUMBER
+      puts "Silly, needs to be below #{MAX_NUMBER}, try again!"
       next
     end
 
@@ -60,7 +60,7 @@ def game( name )
     # as we start from zero, inc this before comparing it.
     guesses += 1
 
-    if guesses >= $MAX_GUESSES
+    if guesses >= MAX_GUESSES
       puts "Too many guesses!"
       return 1  # may as well return something different in this case.
     end
@@ -75,8 +75,7 @@ end
 def mainloop
 
   print "Hello player. What is your name? "
-  name = gets
-  name = name.chomp
+  name = gets.chomp
 
   game( name )
 
