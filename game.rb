@@ -82,7 +82,7 @@ def mainloop
   loop do
 
     print "Would you like to play again? "
-    if /^y/.match( gets.chomp.downcase )
+    if gets.chomp =~ /^y/i 
       game( name )
     else
       puts "Bye!"
